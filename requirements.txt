@@ -1,0 +1,6 @@
+streamlit
+statistics
+scipy
+numpy
+sklearn
+LinearRegression
