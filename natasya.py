@@ -73,37 +73,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-import streamlit as st
-import numpy as np
-from sklearn.linear_model import LinearRegression
-
-def main():
-    st.title("Perhitungan Regresi")
-    st.write("Masukkan data X dan Y untuk melakukan perhitungan regresi jangan tegang yaaa")
-
-    # Menambahkan input teks
-    data_x = st.text_input("Masukkan data X dipisahkan oleh koma:", "")
-    data_y = st.text_input("Masukkan data Y dipisahkan oleh koma:", "")
-
-    # Mengonversi input menjadi list angka
-    x = np.array([float(val) for val in data_x.split(",") if val.strip()])
-    y = np.array([float(val) for val in data_y.split(",") if val.strip()])
-
-    # Mengecek apakah data lengkap untuk perhitungan regresi
-    if len(x) > 1 and len(y) > 1 and len(x) == len(y):
-        # Mengubah dimensi data X menjadi bentuk yang sesuai
-        x = x.reshape(-1, 1)
-
-        # Membuat model regresi linear
-        reg = LinearRegression()
-        reg.fit(x, y)
-
-        # Mendapatkan koefisien regresi
-        coef = reg.coef_[0]
-        intercept = reg.intercept_
-
-        st.write("Hasil Perhitungan Regresi:")
-        st.write(f"Persamaan Regresi: Y = {coef:.2f} * X + {intercept:.2f}")
-
-if __name__ == "__main__":
-    main()
